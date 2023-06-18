@@ -469,25 +469,25 @@ img{
     background-color: var(--first-color);
 }
 .skills__html{
-    width: 80%;
+    width: 85%;
 }
 .skills__css{
-    width: 60%;
+    width: 75%;
 }
 .skills__js{
-    width: 50%;
+    width: 60%;
 }
 .skills__c{
-    width: 80%;
+    width: 85%;
 }
 .skills__cpp{
     width: 85%;
 }
 .skills__py{
-    width: 50%;
+    width: 85%;
 }
 .skills__java{
-    width: 30%;
+    width: 50%;
 }
 .skills__canva{
     width: 70%;
@@ -496,10 +496,23 @@ img{
     width: 80%;
 }
 .skills__figma{
-    width: 30%;
+    width: 60%;
 }
 .skills__adobeX{
-    width: 20%;
+    width: 40%;
+}
+
+.skills__jupyter{
+    width: 85%;
+}
+.skills__tableau{
+    width: 75%;
+}
+.skills__excel{
+    width: 75%;
+}
+.skills__postman{
+    width: 65%;
 }
 
 .skills__close .skills__list{
