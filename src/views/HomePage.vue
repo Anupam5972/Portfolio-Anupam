@@ -3,6 +3,7 @@ import { computed } from 'vue'
 
 import EasterEggBoard from '../components/interactive/EasterEggBoard.vue'
 import ParallaxHero from '../components/interactive/ParallaxHero.vue'
+import LazySection from '../components/shared/LazySection.vue'
 import PortraitPanel from '../components/shared/PortraitPanel.vue'
 import { sitePaths, withBase } from '../utils/sitePaths'
 import {
@@ -44,7 +45,7 @@ const currentOrgBanner = withBase('images/logos/ge-healthcare-full.png')
       :portrait="portfolio.portraits.home"
     />
 
-    <section class="content-grid">
+    <LazySection class="content-grid" min-height="28rem">
       <article class="surface-card story-card">
         <p class="eyebrow">Profile</p>
         <h2>Engineering with a systems lens.</h2>
@@ -65,9 +66,9 @@ const currentOrgBanner = withBase('images/logos/ge-healthcare-full.png')
       </article>
 
       <PortraitPanel :portrait="portfolio.portraits.projects" />
-    </section>
+    </LazySection>
 
-    <section class="surface-card">
+    <LazySection class="surface-card" min-height="20rem">
       <div class="section-head">
         <div>
           <p class="eyebrow">Focus Areas</p>
@@ -82,9 +83,9 @@ const currentOrgBanner = withBase('images/logos/ge-healthcare-full.png')
           <p>{{ area.text }}</p>
         </article>
       </div>
-    </section>
+    </LazySection>
 
-    <section class="surface-card">
+    <LazySection class="surface-card" min-height="18rem">
       <div class="section-head">
         <div>
           <p class="eyebrow">Hidden Switches</p>
@@ -94,6 +95,6 @@ const currentOrgBanner = withBase('images/logos/ge-healthcare-full.png')
       </div>
 
       <EasterEggBoard :items="portfolio.experiments.slice(0, 2)" />
-    </section>
+    </LazySection>
   </div>
 </template>

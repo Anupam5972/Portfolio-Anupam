@@ -1,4 +1,6 @@
 <script setup>
+import LazySection from '../components/shared/LazySection.vue'
+
 const props = defineProps({
   portfolio: {
     type: Object,
@@ -25,7 +27,13 @@ const heroBackgroundStyle = props.portfolio.portraits.projects.image
     </section>
 
     <section class="project-grid">
-      <article v-for="project in portfolio.projects" :key="project.name" class="surface-card project-card">
+      <LazySection
+        v-for="project in portfolio.projects"
+        :key="project.name"
+        as="article"
+        class="surface-card project-card"
+        min-height="24rem"
+      >
         <div class="project-topline">
           <span class="eyebrow">{{ project.category }}</span>
           <span class="project-status">{{ project.status }}</span>
@@ -46,7 +54,7 @@ const heroBackgroundStyle = props.portfolio.portraits.projects.image
         <div class="pill-row">
           <span v-for="item in project.stack" :key="item" class="tag-pill">{{ item }}</span>
         </div>
-      </article>
+      </LazySection>
     </section>
   </div>
 </template>

@@ -141,6 +141,11 @@
   gap: 1.3rem;
 }
 
+.lazy-placeholder {
+  width: 100%;
+  border-radius: inherit;
+}
+
 .hero-slab,
 .surface-card,
 .timeline-body {
@@ -278,13 +283,33 @@ h3 {
   width: min(100%, 18rem);
   max-width: 100%;
   z-index: 1;
-  transition: transform 0.18s ease-out;
+  --spotlight-x: 50%;
+  --spotlight-y: 50%;
+  --spotlight-opacity: 0;
+}
+
+.hero-portrait-wrap::after {
+  content: '';
+  position: absolute;
+  inset: -4%;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: var(--spotlight-opacity);
+  background:
+    radial-gradient(circle at var(--spotlight-x) var(--spotlight-y),
+      rgba(255, 255, 255, 0.32) 0,
+      rgba(124, 226, 211, 0.26) 14%,
+      rgba(124, 226, 211, 0.12) 24%,
+      rgba(124, 226, 211, 0.02) 38%,
+      transparent 52%);
+  mix-blend-mode: screen;
+  transition: opacity 0.18s ease-out;
 }
 
 .orbital {
   position: absolute;
   border-radius: 50%;
-  transition: transform 0.18s ease-out;
 }
 
 .orbital-large {
@@ -313,7 +338,6 @@ h3 {
   border-radius: var(--radius-lg);
   background: rgba(12, 20, 35, 0.84);
   z-index: 1;
-  transition: transform 0.18s ease-out;
 }
 
 .portrait-panel {
@@ -356,7 +380,7 @@ h3 {
 }
 
 .portrait-content {
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -371,6 +395,7 @@ h3 {
   font-size: clamp(3rem, 6vw, 4.5rem);
   line-height: 1;
   color: rgba(255, 255, 255, 0.14);
+  z-index: 0;
 }
 
 .portrait-panel h3 {
@@ -408,7 +433,73 @@ h3 {
 }
 
 .portrait-hero {
-  min-height: 16rem;
+  min-height: 19rem;
+  width: min(100%, 20rem);
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+  border-radius: 50%;
+  border: 1px solid rgba(124, 226, 211, 0.22);
+  background:
+    radial-gradient(circle at center, rgba(124, 226, 211, 0.14), rgba(8, 15, 28, 0.88) 72%);
+  box-shadow:
+    0 22px 50px rgba(0, 0, 0, 0.28),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.portrait-hero .portrait-image {
+  inset: 12%;
+  width: 76%;
+  height: 76%;
+  border-radius: 50%;
+  object-position: center 26%;
+  z-index: 1;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.26);
+}
+
+.portrait-hero::before {
+  content: '';
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.08), transparent 42%),
+    radial-gradient(circle at 70% 70%, rgba(124, 226, 211, 0.12), transparent 35%);
+}
+
+.portrait-hero .portrait-glow {
+  inset: 0;
+}
+
+.portrait-hero .portrait-glow::before {
+  width: 14rem;
+  height: 14rem;
+  top: 8%;
+  left: 8%;
+  background: radial-gradient(circle, rgba(124, 226, 211, 0.14), transparent 66%);
+}
+
+.portrait-hero .portrait-glow::after {
+  width: 10rem;
+  height: 10rem;
+  right: 8%;
+  bottom: 10%;
+  background: radial-gradient(circle, rgba(255, 199, 111, 0.16), transparent 68%);
+}
+
+.portrait-hero .portrait-initials {
+  top: 50%;
+  left: 50%;
+  right: auto;
+  transform: translate(-50%, -50%);
+  font-size: clamp(5.5rem, 12vw, 8rem);
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.08);
+  z-index: 0;
+}
+
+.portrait-hero .portrait-content {
+  display: none;
 }
 
 .portrait-timeline {
@@ -480,16 +571,76 @@ h3 {
 }
 
 .metric-card {
+  flex: 1 1 0;
   padding: 1rem 1.1rem;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.04);
 }
 
+.metric-card:nth-child(3) {
+  flex: 2 1 0;
+}
+
 .metric-card strong {
   display: block;
   margin-top: 0.35rem;
   font-size: 1.8rem;
+}
+
+.metric-card-logo {
+  display: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-top: 0.2rem;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.experience-metrics-card {
+  width: 100%;
+}
+
+.experience-metrics-list {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.metric-card-company {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.metric-card-company-head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.metric-card-company .metric-card-label {
+  display: inline-block;
+}
+
+.metric-card-company .metric-card-logo {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  margin-top: 0;
+}
+
+.metric-card-company strong {
+  display: block;
+  margin-top: 0.7rem;
+  font-size: 1.8rem;
+}
+
+.experience-metrics > .metric-card:first-child {
+  flex: 1 1 0;
+}
+
+.experience-metrics > .metric-card-company {
+  flex: 2 1 0;
 }
 
 .surface-card {
@@ -626,6 +777,7 @@ h3 {
   position: relative;
   display: grid;
   gap: 0.2rem;
+  min-width: 4.5rem;
 }
 
 .timeline-date::before {
@@ -643,13 +795,61 @@ h3 {
 }
 
 .timeline-rail strong {
+  display: inline-block;
+  min-width: 4ch;
   font-size: 1.55rem;
+  line-height: 1;
   color: var(--accent-strong);
+  white-space: nowrap;
 }
 
 .timeline-body {
   padding: 1.5rem;
   min-width: 0;
+}
+
+.current-role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.9rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 72, 72, 0.18);
+  color: #ffdede;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 0 0 1px rgba(255, 86, 86, 0.35);
+  pointer-events: none;
+}
+
+.current-role-badge::before {
+  content: '';
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: #ff4d4d;
+  box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7);
+  animation: pulse-dot 1.8s infinite;
+}
+
+@keyframes pulse-dot {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.68);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 12px rgba(255, 77, 77, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 77, 77, 0);
+  }
 }
 
 .timeline-head {
@@ -695,6 +895,13 @@ h3 {
   gap: 0.15rem;
   text-align: right;
   min-width: 0;
+}
+
+.timeline-meta-topline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.7rem;
 }
 
 .timeline-meta strong {
@@ -785,6 +992,21 @@ h3 {
   .metric-card {
     min-width: min(100%, 12rem);
   }
+
+  .experience-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .experience-metrics > .metric-card-company {
+    display: none;
+  }
+
+  .experience-metrics .metric-card,
+  .experience-metrics .metric-card:nth-child(3) {
+    min-width: 0;
+  }
 }
 
 @media (max-width: 760px) {
@@ -865,6 +1087,14 @@ h3 {
     flex-wrap: wrap;
   }
 
+  .experience-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .experience-metrics-list {
+    display: none;
+  }
+
   .metric-card,
   .feature-card,
   .egg-card,
@@ -872,6 +1102,16 @@ h3 {
   .story-card,
   .rail-card {
     min-width: 100%;
+  }
+
+  .content-grid > * {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .portrait-project {
+    width: 100%;
+    min-height: 16rem;
   }
 
   .hero-portrait-wrap {
@@ -900,6 +1140,39 @@ h3 {
   .timeline-meta {
     width: 100%;
     gap: 0.3rem;
+  }
+
+  .timeline-meta-topline {
+    justify-content: flex-start;
+    padding-top: 0;
+  }
+
+  .timeline-body-collapsible {
+    cursor: pointer;
+  }
+
+  .timeline-body-collapsible:focus-visible {
+    outline: 2px solid rgba(124, 226, 211, 0.65);
+    outline-offset: 3px;
+  }
+
+  .timeline-body-collapsible .timeline-expandable {
+    display: none;
+  }
+
+  .timeline-body-collapsible.timeline-body-expanded .timeline-expandable {
+    display: flex;
+  }
+
+  .timeline-body-collapsible.timeline-body-expanded .bullet-list.timeline-expandable {
+    display: grid;
+  }
+
+  .current-role-badge {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    left: auto;
   }
 
   .hero-lite-projects {
@@ -981,8 +1254,51 @@ h3 {
     font-size: 1.4rem;
   }
 
+  .experience-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .experience-metrics .metric-card {
+    width: 100%;
+    min-width: 0;
+    padding: 0.9rem;
+  }
+
+  .experience-metrics-list {
+    display: none;
+  }
+
+  .metric-card-company .metric-card-label {
+    display: none;
+  }
+
+  .metric-card-company .metric-card-logo {
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .metric-card-company strong {
+    margin-top: 0.7rem;
+  }
+
+  .current-role-badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    left: auto;
+    padding: 0.42rem 0.72rem;
+    font-size: 0.72rem;
+  }
+
   .portrait-panel {
     min-height: 15rem;
+  }
+
+  .portrait-project {
+    min-height: 14rem;
   }
 
   .portrait-content {
@@ -1001,8 +1317,7 @@ h3 {
     left: -1.1rem;
   }
 
-  .project-status,
-  .tag-pill {
+  .project-status {
     width: 100%;
     justify-content: center;
   }

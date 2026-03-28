@@ -1,5 +1,6 @@
 <script setup>
 import EasterEggBoard from '../components/interactive/EasterEggBoard.vue'
+import LazySection from '../components/shared/LazySection.vue'
 
 const props = defineProps({
   portfolio: {
@@ -38,9 +39,11 @@ const benchItems = [
       </p>
     </section>
 
-    <EasterEggBoard :items="portfolio.experiments" />
+    <LazySection min-height="22rem">
+      <EasterEggBoard :items="portfolio.experiments" />
+    </LazySection>
 
-    <section class="content-grid">
+    <LazySection class="content-grid" min-height="24rem">
       <article class="surface-card">
         <p class="eyebrow">What Lives Here</p>
         <h2>Not demos. More like controlled chaos.</h2>
@@ -71,6 +74,6 @@ const benchItems = [
           </a>
         </div>
       </article>
-    </section>
+    </LazySection>
   </div>
 </template>

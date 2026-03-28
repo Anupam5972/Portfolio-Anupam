@@ -21,25 +21,23 @@ const props = defineProps({
   },
 })
 
-const pointer = ref({ x: 0, y: 0 })
+const pointer = ref({ x: 50, y: 50, active: false })
 
-const layerStyle = computed(() => ({
-  transform: `translate3d(${pointer.value.x * 18}px, ${pointer.value.y * 18}px, 0)`,
-}))
-
-const panelStyle = computed(() => ({
-  transform: `translate3d(${pointer.value.x * -12}px, ${pointer.value.y * -12}px, 0)`,
+const spotlightStyle = computed(() => ({
+  '--spotlight-x': `${pointer.value.x}%`,
+  '--spotlight-y': `${pointer.value.y}%`,
+  '--spotlight-opacity': pointer.value.active ? 1 : 0,
 }))
 
 function handleMove(event) {
   const bounds = event.currentTarget.getBoundingClientRect()
-  const x = (event.clientX - bounds.left) / bounds.width - 0.5
-  const y = (event.clientY - bounds.top) / bounds.height - 0.5
-  pointer.value = { x, y }
+  const x = ((event.clientX - bounds.left) / bounds.width) * 100
+  const y = ((event.clientY - bounds.top) / bounds.height) * 100
+  pointer.value = { x, y, active: true }
 }
 
 function resetMove() {
-  pointer.value = { x: 0, y: 0 }
+  pointer.value = { x: 50, y: 50, active: false }
 }
 </script>
 
@@ -57,14 +55,14 @@ function resetMove() {
     </div>
 
     <div class="hero-stage">
-      <div class="orbital orbital-large" :style="layerStyle"></div>
-      <div class="orbital orbital-small" :style="panelStyle"></div>
+      <div class="orbital orbital-large"></div>
+      <div class="orbital orbital-small"></div>
 
-      <div class="hero-portrait-wrap" :style="layerStyle">
+      <div class="hero-portrait-wrap" :style="spotlightStyle">
         <PortraitPanel :portrait="portrait" />
       </div>
 
-      <div class="hero-panel" :style="panelStyle">
+      <div class="hero-panel">
         <p class="eyebrow">Now Orbiting</p>
         <h2>{{ currentOrg.company }}</h2>
         <p>{{ currentOrg.title }}</p>
