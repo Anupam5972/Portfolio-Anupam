@@ -76,6 +76,38 @@
   gap: 0.65rem;
 }
 
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  min-height: 3rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+}
+
+.menu-toggle-label {
+  font-size: 0.92rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.menu-toggle-icon {
+  display: inline-grid;
+  gap: 0.26rem;
+}
+
+.menu-toggle-icon span {
+  display: block;
+  width: 1.15rem;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
 .nav-link,
 .tag-pill,
 .footer-link,
@@ -911,12 +943,24 @@ h3 {
   }
 
   .site-nav {
+    display: none;
+    width: 100%;
     flex-direction: column;
+    padding-top: 0.35rem;
+  }
+
+  .site-nav-open {
+    display: flex;
   }
 
   .nav-link {
     width: 100%;
     flex-basis: auto;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    width: 100%;
   }
 
   .hero-actions {
