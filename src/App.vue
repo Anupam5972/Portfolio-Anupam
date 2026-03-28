@@ -1,13 +1,14 @@
 <script setup>
-import { computed, nextTick, onMounted, onUnmounted, ref, shallowRef, watch } from 'vue'
+import { computed, defineAsyncComponent, nextTick, onMounted, onUnmounted, ref, shallowRef, watch } from 'vue'
 
 import AppShell from './components/layout/AppShell.vue'
 import portfolio from './data/portfolio'
 import { getPageFromPath, isInternalPath } from './utils/sitePaths'
-import ExperiencePage from './views/ExperiencePage.vue'
-import HomePage from './views/HomePage.vue'
-import LabPage from './views/LabPage.vue'
-import ProjectsPage from './views/ProjectsPage.vue'
+
+const HomePage = defineAsyncComponent(() => import('./views/HomePage.vue'))
+const ExperiencePage = defineAsyncComponent(() => import('./views/ExperiencePage.vue'))
+const ProjectsPage = defineAsyncComponent(() => import('./views/ProjectsPage.vue'))
+const LabPage = defineAsyncComponent(() => import('./views/LabPage.vue'))
 
 const currentPage = ref(getPageFromPath())
 

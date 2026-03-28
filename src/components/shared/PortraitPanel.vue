@@ -22,8 +22,7 @@ const variantClass = `portrait-${props.portrait.variant || 'hero'}`
       :alt="portrait.title"
     >
     <div class="portrait-glow"></div>
-    <div class="portrait-content">
-      <strong class="portrait-initials">{{ initials }}</strong>
+    <div v-if="!['hero', 'project'].includes(portrait.variant)" class="portrait-content">
       <h3>{{ portrait.title }}</h3>
       <p>{{ portrait.note }}</p>
     </div>
