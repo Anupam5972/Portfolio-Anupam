@@ -1,38 +1,80 @@
-# Portfolio-Anupam
+# Anupam Moharana Portfolio
 
-This template should help get you started developing with Vue 3 in Vite.
+Personal portfolio website built with Vue 3 and Vite.
 
-## Recommended IDE Setup
+Live website: [https://anupam5972.github.io/Portfolio-Anupam/](https://anupam5972.github.io/Portfolio-Anupam/)
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Overview
 
-## Recommended Browser Setup
+This project is a multi-page portfolio site that highlights:
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- Home overview and introduction
+- Experience timeline
+- Project archive
+- Lab / experiments section
 
-## Customize configuration
+The site is designed to work well across desktop and mobile devices, with a mobile-friendly collapsible navigation and responsive layouts across all pages.
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Tech Stack
 
-## Project Setup
+- Vue 3
+- Vite
+- Vue Single File Components
+- CSS with shared global styling
+
+## Project Structure
+
+- `index.html` for the home page
+- `experience/index.html` for the experience page
+- `projects/index.html` for the projects page
+- `lab/index.html` for the lab page
+- `src/components` for reusable UI pieces
+- `src/views` for page-level views
+- `src/assets` for shared styles and assets
+- `src/data/portfolio.js` for portfolio content
+
+## Local Development
+
+Install dependencies:
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+Start the development server:
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+Create a production build:
 
 ```sh
 npm run build
 ```
+
+Preview the production build locally:
+
+```sh
+npm run preview
+```
+
+## Deployment
+
+The site is configured for GitHub Pages with the Vite base path:
+
+```js
+/Portfolio-Anupam/
+```
+
+That maps to:
+
+`https://anupam5972.github.io/Portfolio-Anupam/`
+
+## Recent Improvements
+
+- Responsive updates across all pages for mobile devices
+- Improved spacing, wrapping, and overflow handling
+- Better mobile treatment for cards, timeline, and hero sections
+- Collapsible mobile navigation that shows the active page label
+
