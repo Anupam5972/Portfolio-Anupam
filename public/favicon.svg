@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1528" />
+      <stop offset="55%" stop-color="#111c33" />
+      <stop offset="100%" stop-color="#0b1222" />
+    </linearGradient>
+    <radialGradient id="glowA" cx="28%" cy="24%" r="70%">
+      <stop offset="0%" stop-color="#7ce2d3" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#7ce2d3" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glowB" cx="78%" cy="76%" r="68%">
+      <stop offset="0%" stop-color="#ffc76f" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#ffc76f" stop-opacity="0" />
+    </radialGradient>
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="2.4" />
+    </filter>
+  </defs>
+
+  <rect x="2" y="2" width="60" height="60" rx="18" fill="url(#bg)" />
+  <rect x="2.75" y="2.75" width="58.5" height="58.5" rx="17.25" fill="none" stroke="#7ce2d3" stroke-opacity="0.28" stroke-width="1.5" />
+
+  <g filter="url(#softGlow)">
+    <circle cx="19" cy="18" r="16" fill="url(#glowA)">
+      <animate attributeName="cy" values="18;16;18" dur="3.4s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="3.4s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="48" cy="47" r="14" fill="url(#glowB)">
+      <animate attributeName="cy" values="47;49;47" dur="2.8s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.55;0.8;0.55" dur="2.8s" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <text
+    x="50%"
+    y="55%"
+    text-anchor="middle"
+    font-size="31"
+    font-weight="700"
+    font-family="'Iowan Old Style', 'Palatino Linotype', 'Times New Roman', serif"
+    letter-spacing="-1.6"
+    fill="#ffffff"
+    fill-opacity="0.17"
+  >
+    AM
+    <animate attributeName="opacity" values="0.13;0.26;0.13" dur="2.6s" repeatCount="indefinite" />
+  </text>
+
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#7ce2d3" stroke-opacity="0.14" stroke-width="1">
+    <animate attributeName="r" values="29;30;29" dur="3.2s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.18;0.32;0.18" dur="3.2s" repeatCount="indefinite" />
+  </circle>
+</svg>

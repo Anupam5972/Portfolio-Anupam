@@ -4,6 +4,7 @@ import { computed } from 'vue'
 import EasterEggBoard from '../components/interactive/EasterEggBoard.vue'
 import ParallaxHero from '../components/interactive/ParallaxHero.vue'
 import PortraitPanel from '../components/shared/PortraitPanel.vue'
+import { sitePaths, withBase } from '../utils/sitePaths'
 import {
   formatExperience,
   getCompanyExperienceMonths,
@@ -23,13 +24,15 @@ const geExperience = computed(() => getCompanyExperienceMonths(props.portfolio.e
 const stats = computed(() => [
   { label: 'Total Experience', value: formatExperience(totalExperience.value) },
   { label: 'GE HealthCare', value: formatExperience(geExperience.value) },
-  { label: 'Core Stack', value: 'Java + Spring Boot' },
+  { label: 'Core Stack', value: 'Java + Spring Boot + UI/UX' },
 ])
 
 const currentOrg = computed(() => ({
   ...props.portfolio.experience[0],
   durationLabel: formatExperience(getCompanyExperienceMonths(props.portfolio.experience, 'GE HealthCare')),
 }))
+
+const currentOrgBanner = withBase('images/logos/ge-healthcare-full.png')
 </script>
 
 <template>
@@ -52,13 +55,13 @@ const currentOrg = computed(() => ({
       </article>
 
       <article class="surface-card rail-card">
-        <p class="eyebrow">Trajectory</p>
-        <h2>From internships to production systems.</h2>
+        <p class="eyebrow">Currently Shipping</p>
+        <h2>{{ `Working at ${currentOrg.company} as ${currentOrg.title}.` }}</h2>
+        <img class="company-banner" :src="currentOrgBanner" alt="GE HealthCare">
         <p>
-          The work history is dynamic across the site. Change a joining month once and the tenure labels,
-          company durations, and overall experience recalculate automatically.
+          {{ `Right now I’m building in ${currentOrg.location}, where I’ve been working across production systems for ${currentOrg.durationLabel}.` }}
         </p>
-        <a class="text-link" href="/experience.html">Inspect the experience timeline</a>
+        <a class="text-link" :href="`${sitePaths.experience}#present-work`">Inspect the experience timeline</a>
       </article>
 
       <PortraitPanel :portrait="portfolio.portraits.projects" />
@@ -70,7 +73,7 @@ const currentOrg = computed(() => ({
           <p class="eyebrow">Focus Areas</p>
           <h2>What I like building</h2>
         </div>
-        <a class="text-link" href="/projects.html">See project notes</a>
+        <a class="text-link" :href="sitePaths.projects">See project notes</a>
       </div>
 
       <div class="feature-grid">
@@ -87,7 +90,7 @@ const currentOrg = computed(() => ({
           <p class="eyebrow">Hidden Switches</p>
           <h2>Click around a little.</h2>
         </div>
-        <a class="text-link" href="/lab.html">Open the lab</a>
+        <a class="text-link" :href="sitePaths.lab">Open the lab</a>
       </div>
 
       <EasterEggBoard :items="portfolio.experiments.slice(0, 2)" />

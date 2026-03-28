@@ -1,3 +1,5 @@
+import { sitePaths, withBase } from '../utils/sitePaths'
+
 const portfolio = {
   identity: {
     name: 'Anupam Moharana',
@@ -7,10 +9,10 @@ const portfolio = {
     availability: 'Open to full-stack, backend, and product engineering roles',
   },
   navigation: [
-    { id: 'home', label: 'Home', href: '/index.html' },
-    { id: 'experience', label: 'Experience', href: '/experience.html' },
-    { id: 'projects', label: 'Projects', href: '/projects.html' },
-    { id: 'lab', label: 'Lab', href: '/lab.html' },
+    { id: 'home', label: 'Home', href: sitePaths.home },
+    { id: 'experience', label: 'Experience', href: sitePaths.experience },
+    { id: 'projects', label: 'Projects', href: sitePaths.projects },
+    { id: 'lab', label: 'Lab', href: sitePaths.lab },
   ],
   hero: {
     eyebrow: 'Full-Stack Web Developer // Web Apps, APIs, Product Systems',
@@ -19,11 +21,11 @@ const portfolio = {
       'I work across frontend experiences, backend systems, APIs, and scalable product flows, with a strong focus on clean architecture, reliability, and user-facing clarity.',
     primaryCta: {
       label: 'Explore Experience',
-      href: '/experience.html',
+      href: sitePaths.experience,
     },
     secondaryCta: {
       label: 'Open Projects',
-      href: '/projects.html',
+      href: sitePaths.projects,
     },
     orbitNotes: [
       '10M+ secure sync operations/month',
@@ -59,30 +61,31 @@ const portfolio = {
       title: 'Hero Scene',
       note: 'Reserved for a cinematic landing-page portrait generated from your reference photo.',
       variant: 'hero',
-      image: '/images/anupam-hero.png',
+      image: withBase('images/anupam-hero.png'),
     },
     experience: {
       title: 'Timeline Mode',
       note: 'Use a sharper professional portrait here with a darker editorial treatment.',
       variant: 'timeline',
-      image: '/images/anupam-experience.png',
+      image: withBase('images/anupam-experience.png'),
     },
     projects: {
       title: 'Builder Mode',
       note: 'Good spot for a futuristic desk or code-lab style portrait background.',
       variant: 'project',
-      image: '/images/anupam-projects.png',
+      image: withBase('images/anupam-projects.png'),
     },
     lab: {
       title: 'Experimental Mode',
       note: 'This one can be playful, neon, surreal, or more stylized than the rest.',
       variant: 'lab',
-      image: '/images/anupam-lab.png',
+      image: withBase('images/anupam-lab.png'),
     },
   },
   experience: [
     {
       company: 'GE HealthCare',
+      logo: withBase('images/logos/ge-healthcare.png'),
       title: 'Software Engineer',
       location: 'Bengaluru',
       start: '2024-07',
@@ -100,6 +103,7 @@ const portfolio = {
     },
     {
       company: 'Infinisync Consulting',
+      logo: withBase('images/logos/infinisync-consulting.png'),
       title: 'Software Consultant',
       location: 'New Delhi',
       start: '2024-04',
@@ -116,6 +120,7 @@ const portfolio = {
     },
     {
       company: 'GE HealthCare',
+      logo: withBase('images/logos/ge-healthcare.png'),
       title: 'Software Development Intern',
       location: 'Bengaluru',
       start: '2023-09',
@@ -131,6 +136,7 @@ const portfolio = {
     },
     {
       company: 'HighRadius Technologies',
+      logo: withBase('images/logos/highradius-technologies.png'),
       title: 'Product and Engineering Intern',
       location: 'Bhubaneswar',
       start: '2023-04',

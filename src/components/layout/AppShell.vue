@@ -1,4 +1,6 @@
 <script setup>
+import { sitePaths, withBase } from '@/utils/sitePaths'
+
 defineProps({
   currentPage: {
     type: String,
@@ -13,13 +15,15 @@ defineProps({
     required: true,
   },
 })
+
+const brandImage = withBase('images/anupam.png')
 </script>
 
 <template>
   <div class="app-shell">
     <header class="site-header">
-      <a class="brand-mark" href="/index.html">
-        <img class="brand-avatar" src="/images/anupam.png" alt="Anupam Moharana">
+      <a class="brand-mark" :href="sitePaths.home">
+        <img class="brand-avatar" :src="brandImage" alt="Anupam Moharana">
         <span>
           <strong>{{ identity.name }}</strong>
           <small>{{ identity.role }}</small>

@@ -1,7 +1,6 @@
 <script setup>
 import { computed } from 'vue'
 
-import PortraitPanel from '../components/shared/PortraitPanel.vue'
 import {
   formatExperience,
   getCompanySummaries,
@@ -19,16 +18,23 @@ const props = defineProps({
 const roles = computed(() => getTimelineDecorations(props.portfolio.experience))
 const totalExperience = computed(() => formatExperience(getTotalExperienceMonths(props.portfolio.experience)))
 const companySummaries = computed(() => getCompanySummaries(props.portfolio.experience))
+
+const heroBackgroundStyle = props.portfolio.portraits.experience.image
+  ? {
+      backgroundImage: `linear-gradient(90deg, rgba(8, 14, 26, 0.94) 0%, rgba(8, 14, 26, 0.84) 42%, rgba(8, 14, 26, 0.56) 100%), url(${props.portfolio.portraits.experience.image})`,
+    }
+  : {}
+
 </script>
 
 <template>
   <div class="page-stack">
-    <section class="surface-card hero-lite">
-      <p class="eyebrow">Experience Ledger</p>
-      <h1>Work history that updates itself.</h1>
+    <section class="surface-card hero-lite hero-lite-experience" :style="heroBackgroundStyle">
+      <p class="eyebrow">Career Patch Notes</p>
+      <h1>The bug-free-ish timeline of how I got here.</h1>
       <p>
-        Tenure is calculated from the start and end dates below, including overall experience and time spent
-        with a particular organization.
+        A running log of roles, systems, and increasingly serious responsibility. The dates do the math, so I
+        can keep the storytelling human.
       </p>
 
       <div class="metric-row">
@@ -46,22 +52,34 @@ const companySummaries = computed(() => getCompanySummaries(props.portfolio.expe
           <strong>{{ summary.durationLabel }}</strong>
         </article>
       </div>
-
-      <div class="hero-lite-portrait">
-        <PortraitPanel :portrait="portfolio.portraits.experience" />
-      </div>
     </section>
 
     <section class="timeline">
-      <article v-for="role in roles" :key="`${role.company}-${role.title}-${role.start}`" class="timeline-card">
+      <article
+        v-for="role in roles"
+        :id="role.end === null ? 'present-work' : undefined"
+        :key="`${role.company}-${role.title}-${role.start}`"
+        class="timeline-card"
+      >
         <div class="timeline-rail">
-          <span>{{ role.startMonth }}</span>
-          <strong>{{ role.startYear }}</strong>
+          <div class="timeline-date">
+            <span>{{ role.startMonth }}</span>
+            <strong>{{ role.startYear }}</strong>
+          </div>
         </div>
 
         <div class="timeline-body surface-card">
           <div class="timeline-head">
-            <div>
+            <div class="timeline-role">
+              <div class="company-mark-wrap">
+                <img
+                  v-if="role.logo"
+                  class="company-mark-image"
+                  :src="role.logo"
+                  :alt="`${role.company} logo`"
+                >
+              </div>
+
               <p class="eyebrow">{{ role.company }}</p>
               <h2>{{ role.title }}</h2>
             </div>

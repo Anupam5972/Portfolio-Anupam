@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="hrBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10192b" />
+      <stop offset="100%" stop-color="#141f36" />
+    </linearGradient>
+    <linearGradient id="hrAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7ce2d3" />
+      <stop offset="100%" stop-color="#bf81ff" />
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="18" fill="url(#hrBg)" />
+  <rect x="2" y="2" width="60" height="60" rx="18" fill="none" stroke="#7ce2d3" stroke-opacity="0.18" />
+  <path d="M18 18h6v11h10V18h6v28h-6V35H24v11h-6z" fill="#f4f7fb" fill-opacity="0.94" />
+  <path d="M43 18h7c6.5 0 10 2.9 10 8.4 0 3.9-1.8 6.4-5.1 7.6L60 46h-7.2l-4.4-10.2H50c2 0 3.4-0.3 4.4-1 1-0.7 1.5-1.9 1.5-3.5 0-1.8-0.6-3-1.8-3.8-1.2-0.7-2.9-1.1-5.2-1.1h-1v19.6h-6z" fill="url(#hrAccent)" transform="translate(-7 0) scale(0.9 1)" />
+</svg>

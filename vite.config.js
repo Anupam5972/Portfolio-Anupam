@@ -14,9 +14,9 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: fileURLToPath(new URL('./index.html', import.meta.url)),
-        experience: fileURLToPath(new URL('./experience.html', import.meta.url)),
-        projects: fileURLToPath(new URL('./projects.html', import.meta.url)),
-        lab: fileURLToPath(new URL('./lab.html', import.meta.url)),
+        experience: fileURLToPath(new URL('./experience/index.html', import.meta.url)),
+        projects: fileURLToPath(new URL('./projects/index.html', import.meta.url)),
+        lab: fileURLToPath(new URL('./lab/index.html', import.meta.url)),
       },
     },
   },

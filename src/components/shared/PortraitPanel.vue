@@ -23,7 +23,6 @@ const variantClass = `portrait-${props.portrait.variant || 'hero'}`
     >
     <div class="portrait-glow"></div>
     <div class="portrait-content">
-      <span class="eyebrow">{{ portrait.image ? 'AI Portrait' : 'Portrait Slot' }}</span>
       <strong class="portrait-initials">{{ initials }}</strong>
       <h3>{{ portrait.title }}</h3>
       <p>{{ portrait.note }}</p>
