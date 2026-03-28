@@ -2,10 +2,11 @@
 
 #app {
   width: 100%;
+  min-width: 0;
 }
 
 .app-shell {
-  width: min(calc(100% - 2rem), var(--container));
+  width: min(calc(100% - 1.5rem), var(--container));
   margin: 0 auto;
   padding: 1.2rem 0 4rem;
 }
@@ -39,6 +40,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.85rem;
+  min-width: 0;
 }
 
 .brand-avatar {
@@ -56,6 +58,11 @@
 .site-footer strong {
   display: block;
   font-size: 0.98rem;
+}
+
+.brand-mark span,
+.site-footer > div {
+  min-width: 0;
 }
 
 .brand-mark small,
@@ -80,10 +87,14 @@
 }
 
 .nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.7rem 1rem;
   border: 1px solid transparent;
   border-radius: var(--radius-pill);
   color: var(--muted);
+  text-align: center;
 }
 
 .nav-link:hover,
@@ -189,9 +200,11 @@ h3 {
   align-items: center;
   justify-content: center;
   min-height: 3.1rem;
+  min-width: 0;
   padding: 0.8rem 1.2rem;
   border-radius: var(--radius-pill);
   border: 1px solid transparent;
+  text-align: center;
 }
 
 .button:hover,
@@ -426,6 +439,7 @@ h3 {
 .rail-card {
   flex: 1 1 0;
   min-width: 14rem;
+  min-width: min(100%, 14rem);
 }
 
 .metric-row {
@@ -531,6 +545,10 @@ h3 {
   color: var(--accent-strong);
 }
 
+.footer-link {
+  max-width: 100%;
+}
+
 .company-banner {
   display: block;
   width: 100%;
@@ -599,6 +617,7 @@ h3 {
 
 .timeline-body {
   padding: 1.5rem;
+  min-width: 0;
 }
 
 .timeline-head {
@@ -643,6 +662,7 @@ h3 {
   display: grid;
   gap: 0.15rem;
   text-align: right;
+  min-width: 0;
 }
 
 .timeline-meta strong {
@@ -681,6 +701,7 @@ h3 {
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.04);
   color: var(--text);
+  text-align: center;
 }
 
 .tag-pill-link {
@@ -715,6 +736,25 @@ h3 {
   }
 }
 
+@media (max-width: 1024px) {
+  .hero-slab {
+    padding: 1.6rem;
+  }
+
+  .hero-slab h1,
+  .hero-lite h1 {
+    max-width: 100%;
+  }
+
+  .metric-row {
+    flex-wrap: wrap;
+  }
+
+  .metric-card {
+    min-width: min(100%, 12rem);
+  }
+}
+
 @media (max-width: 760px) {
   .app-shell {
     width: min(calc(100% - 1rem), var(--container));
@@ -726,6 +766,21 @@ h3 {
   .timeline-head {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .site-header,
+  .site-footer {
+    padding: 1rem;
+  }
+
+  .site-nav {
+    width: 100%;
+    gap: 0.55rem;
+  }
+
+  .nav-link {
+    flex: 1 1 calc(50% - 0.55rem);
+    min-width: 0;
   }
 
   .timeline-role {
@@ -760,6 +815,14 @@ h3 {
     border-radius: 24px;
   }
 
+  .hero-slab {
+    gap: 1.1rem;
+  }
+
+  .hero-summary {
+    font-size: 1rem;
+  }
+
   .hero-panel {
     width: 100%;
     max-width: none;
@@ -770,8 +833,41 @@ h3 {
     flex-wrap: wrap;
   }
 
+  .metric-card,
+  .feature-card,
+  .egg-card,
+  .project-card,
+  .story-card,
+  .rail-card {
+    min-width: 100%;
+  }
+
   .hero-portrait-wrap {
     width: 100%;
+  }
+
+  .section-head,
+  .project-topline {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .timeline-role {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-role .eyebrow,
+  .timeline-role h2 {
+    grid-column: auto;
+  }
+
+  .company-mark-wrap {
+    grid-row: auto;
+  }
+
+  .timeline-meta {
+    width: 100%;
+    gap: 0.3rem;
   }
 
   .hero-lite-projects {
@@ -781,5 +877,89 @@ h3 {
   .orbital-large {
     width: 8rem;
     height: 8rem;
+  }
+
+  .orbital-small {
+    width: 4.5rem;
+    height: 4.5rem;
+    left: 4%;
+    bottom: 1rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .app-shell {
+    width: min(calc(100% - 0.75rem), var(--container));
+    padding-bottom: 2.5rem;
+  }
+
+  .site-header,
+  .site-footer,
+  .hero-slab,
+  .surface-card,
+  .timeline-body {
+    border-radius: 20px;
+  }
+
+  .brand-mark {
+    align-items: flex-start;
+  }
+
+  .brand-avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .site-nav {
+    flex-direction: column;
+  }
+
+  .nav-link {
+    width: 100%;
+    flex-basis: auto;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+  }
+
+  .hero-stage {
+    min-height: auto;
+    padding: 1rem;
+  }
+
+  .hero-panel h2,
+  .timeline-rail strong {
+    font-size: 1.4rem;
+  }
+
+  .portrait-panel {
+    min-height: 15rem;
+  }
+
+  .portrait-content {
+    padding: 0.95rem;
+  }
+
+  .timeline-rail {
+    padding-left: 1.35rem;
+  }
+
+  .timeline::before {
+    left: 0.58rem;
+  }
+
+  .timeline-date::before {
+    left: -1.1rem;
+  }
+
+  .project-status,
+  .tag-pill {
+    width: 100%;
+    justify-content: center;
   }
 }
